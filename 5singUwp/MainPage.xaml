@@ -6,8 +6,68 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+   
+    <Page.Resources>
+        <DataTemplate x:Key="songList">
+        </DataTemplate>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <GridView Grid.Column="1" Grid.Row="1" x:Name="ycMusicList" SelectionChanged="ycMusicList_SelectionChanged" >
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="{Binding Img}" Stretch="UniformToFill" MaxHeight="120" MaxWidth="120"/>
+                        <TextBlock Text="{Binding Name}" MaxHeight="120" MaxWidth="120" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Post}"   Foreground="Aqua" MaxHeight="120" MaxWidth="120"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="BorderBrush" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="120"/>
+                    <Setter Property="Height" Value="360"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+        </GridView>
+        <GridView Grid.Column="1" Grid.Row="2" x:Name="fcMusicList" SelectionChanged="fcMusicList_SelectionChanged" >
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="{Binding Img}" Stretch="UniformToFill" MaxHeight="120" MaxWidth="120"/>
+                        <TextBlock Text="{Binding Name}" MaxHeight="120" MaxWidth="120" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding Post}"   Foreground="Aqua" MaxHeight="120" MaxWidth="120"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="BorderBrush" Value="White"/>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Width" Value="120"/>
+                    <Setter Property="Height" Value="360"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+        </GridView>
+        <MediaElement Name="media"></MediaElement>
+        <Button Grid.Column="0" Grid.Row="3" Content="停止" Name="stop" Click="stop_Click" >
+        </Button>
 
     </Grid>
 </Page>
